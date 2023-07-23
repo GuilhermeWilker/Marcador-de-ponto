@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Pontos</title>
+    <style>
+              body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
+      }
+
+      .container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 30px;
+      }
+
+      .form {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 20px;
+      }
+
+      .form label,
+      .form input {
+          margin-bottom: 10px;
+      }
+
+      .tabela {
+          width: 90%;
+          height: 450px;
+          padding-block: 35px;
+
+          overflow-y: scroll;
+      }
+
+      .tabela h4 {
+        text-align: center;
+      }
+
+      table {
+          width: 100%;
+          border-collapse: collapse;
+      }
+
+      th, td {
+          padding: 8px;
+          text-align: left;
+          font-size: 13px;
+      }
+
+
+
+      thead {
+          background-color: #f2f2f2;
+      }
+
+      tbody tr:nth-child(even) {
+          background-color: #f2f2f2;
+      }
+
+      button {
+          cursor: pointer;
+          padding: 5px 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button id="btn-marcar-ponto" onclick="marcarPonto()">
+        Marcar ponto de entrada
+      </button>
+
+      <h4>Tabela de Pontos</h4>
+      <div class="tabela">
+        <table id="pontos">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Hr. Entrada</th>
+              <th>Hr. Saída</th>
+              <th>--</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-corpo"></tbody>
+        </table>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
