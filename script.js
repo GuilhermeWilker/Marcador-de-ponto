@@ -44,9 +44,7 @@ function exibirTabela() {
             <td>${ponto.data}</td>
             <td>${ponto.entrada}</td>
             <td>${ponto.saida}</td>
-            // <td>
-            //   <button onclick="deletarPonto(${index})">Deletar</button>
-            // </td>
+          
         `;
     tabelaCorpo.appendChild(row);
   });
@@ -74,3 +72,9 @@ function salvarDados() {
 }
 
 carregarDados();
+
+{
+  /* <td>
+<button onclick="deletarPonto(${index})">Deletar</button>
+</td> */
+}
