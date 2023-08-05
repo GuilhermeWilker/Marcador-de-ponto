@@ -1,4 +1,6 @@
 let pontos = [];
+let pontoDeEntrada = true;
+let ultimoPontoAberto = false;
 
 function carregarDados() {
   const dadosSalvos = localStorage.getItem("pontos");
@@ -6,13 +8,18 @@ function carregarDados() {
     pontos = JSON.parse(dadosSalvos);
     exibirTabela();
   }
-}
 
-let pontoDeEntrada = true;
+  const ultimoPonto = pontos.length > 0 ? pontos[pontos.length - 1] : null;
+  if (ultimoPonto && ultimoPonto.saida === "") {
+    pontoDeEntrada = false;
+    document.getElementById("btn-marcar-ponto").innerText =
+      "Marcar ponto de saída";
+    ultimoPontoAberto = true;
+  }
+}
 
 function marcarPonto() {
   const agora = new Date();
-
   const data = formatarData(agora);
   const horario =
     formatarHora(agora.getHours()) + ":" + formatarHora(agora.getMinutes());
@@ -21,10 +28,12 @@ function marcarPonto() {
     pontos.push({ data, entrada: horario, saida: "" });
     document.getElementById("btn-marcar-ponto").innerText =
       "Marcar como ponto de saída";
+    ultimoPontoAberto = true;
   } else {
     pontos[pontos.length - 1].saida = horario;
     document.getElementById("btn-marcar-ponto").innerText =
       "Marcar ponto de entrada";
+    ultimoPontoAberto = false;
   }
 
   pontoDeEntrada = !pontoDeEntrada;
@@ -45,7 +54,7 @@ function exibirTabela() {
             <td>${ponto.entrada}</td>
             <td>${ponto.saida}</td>
             <td>
-            <button onclick="deletarPonto(${index})">Deletar</button>
+                <button onclick="deletarPonto(${index})">Deletar</button>
             </td> 
         `;
     tabelaCorpo.appendChild(row);
@@ -71,6 +80,12 @@ function deletarPonto(index) {
 
 function salvarDados() {
   localStorage.setItem("pontos", JSON.stringify(pontos));
+  localStorage.setItem("ultimoPontoAberto", ultimoPontoAberto);
 }
 
 carregarDados();
+if (ultimoPontoAberto) {
+  document.getElementById("btn-marcar-ponto").innerText =
+    "Marcar como ponto de saída";
+  pontoDeEntrada = false;
+}
