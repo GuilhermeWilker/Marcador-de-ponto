@@ -1,15 +1,21 @@
 {
   "name": "Registro de Pontos",
   "short_name": "Pontos",
-  "start_url": "./index.html",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#699E9E",
+  "description": "Marcador de pontos mobile",
   "icons": [
     {
-      "src": "icon.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "icon192.png",
+      "sizes": "192x191",
+      "type": "image/png"
+    },
+    {
+      "src": "icon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ]
 }
